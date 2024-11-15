@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Santaellafinal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_web_client_id">Tu ID de cliente web</string>
+
+    <!-- Descripción de la empresa -->
+    <!-- Introducción -->
+    <string name="intro_title">Introducción</string>
+    <string name="intro_text">El proyecto consiste en el desarrollo de una base de datos en Python para gestionar los productos, clientes y ventas de una pequeña empresa de accesorios. Esta base de datos permitirá llevar un control más eficiente y organizado de la información. El objetivo principal es crear una herramienta que facilite la gestión de inventario y relaciones con los clientes, mejorando la toma de decisiones y optimizando procesos. Una buena gestión de datos es crucial para cualquier negocio. Permite identificar tendencias, gestionar el stock de manera efectiva y mejorar el servicio al cliente, lo que puede resultar en un aumento de las ventas y satisfacción del cliente.</string>
+
+    <!-- Desarrollo -->
+    <string name="desarrollo_title">Desarrollo</string>
+    <string name="desarrollo_text">La base de datos se diseñará para almacenar información sobre productos (nombre, categoría, precio, stock), clientes (nombre, contacto, historial de compras) y ventas (fecha, productos vendidos, monto total). Utilizaré Python con una biblioteca como SQLite para crear y manejar la base de datos.\n\nAnálisis de requisitos: Definir qué información es esencial para el negocio.\nDiseño de la base de datos: Estructurar las tablas y relaciones entre ellas.\nImplementación: Programar la base de datos en Python utilizando SQLite. Incluirá funcionalidades como agregar, editar y eliminar productos, así como registrar ventas y consultar datos.\nPruebas: Verificar que todas las funciones trabajen correctamente y que los datos se almacenen y recuperen adecuadamente.</string>
+
+    <!-- Conclusión -->
+    <string name="conclusion_title">Conclusión</string>
+    <string name="conclusion_text">Resumen de los resultados Se logró desarrollar una base de datos que organiza de manera efectiva la información de la empresa. Esto permitirá una gestión más ágil y accesible de los datos.\n\nLogros alcanzados Implementación exitosa de la base de datos. Capacitación en el uso de Python y SQLite. Desarrollo de un sistema que facilita el seguimiento de ventas y clientes.\n\nDificultades encontradas Desafíos en la estructuración inicial de la base de datos. Problemas de compatibilidad con diferentes versiones de bibliotecas. Aprendizaje de nuevas tecnologías que inicialmente resultaron complejas.\n\nAportes personales Este proyecto me ha permitido mejorar mis habilidades en programación y gestión de bases de datos. También he aprendido sobre la importancia de la organización y la planificación en el desarrollo de un sistema que responda a las necesidades reales de un negocio.</string>
+</resources>

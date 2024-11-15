@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/md_theme_onErrorContainer"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/promoImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/promo" />
+
+    <TextView
+        android:id="@+id/promoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Gran promoción!"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/promoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aprovecha esta increíble oferta de 3 collares, 5 earcuff, 2 pares de candongas, 2 pares de aretas tejidas en mostacilla, 2 pulseras con dije en rodio"       android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

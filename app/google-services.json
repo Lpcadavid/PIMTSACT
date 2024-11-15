@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "744994983816",
+    "project_id": "pruebamov-cde4d",
+    "storage_bucket": "pruebamov-cde4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744994983816:android:2f844dec067e273ac0743d",
+        "android_client_info": {
+          "package_name": "com.example.santaellafinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744994983816-bbbq1kf1la7igkqatmjgorkpq7djn9hm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.santaellafinal",
+            "certificate_hash": "45b0508f7541b37fa9a74054e2d9bba86a06e506"
+          }
+        },
+        {
+          "client_id": "744994983816-j29pogop0qh1sujal47dmdofgfiolm81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG-m5i3PsbA8d4lFYg587Z-OP4Y1J0xsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744994983816-j29pogop0qh1sujal47dmdofgfiolm81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744994983816:android:4825063c439839f2c0743d",
+        "android_client_info": {
+          "package_name": "com.example.santaellapits"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744994983816-j29pogop0qh1sujal47dmdofgfiolm81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG-m5i3PsbA8d4lFYg587Z-OP4Y1J0xsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744994983816-j29pogop0qh1sujal47dmdofgfiolm81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
