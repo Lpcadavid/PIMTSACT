@@ -2,6 +2,7 @@ package com.example.santaellafinal;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;  // Importar Toast para mostrar mensajes al usuario
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,8 +31,8 @@ public class InventoryActivity extends AppCompatActivity {
         inventoryRecyclerView = findViewById(R.id.inventoryRecyclerView);
         inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Instancia del adaptador
-        InventoryAdapter inventoryAdapter = new InventoryAdapter(this, productList); // Pass "this" as context
+        // Instancia del adaptador usando la variable global
+        inventoryAdapter = new InventoryAdapter(this, productList); // No crear una nueva variable
         inventoryRecyclerView.setAdapter(inventoryAdapter);
 
         // Cargar productos desde Firebase
@@ -43,12 +44,21 @@ public class InventoryActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     productList.clear();
-                    for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        Product product = document.toObject(Product.class);
-                        productList.add(product);
+                    if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                        for (DocumentSnapshot document : queryDocumentSnapshots) {
+                            Product product = document.toObject(Product.class);
+                            productList.add(product);
+                        }
+                        inventoryAdapter.notifyDataSetChanged();
+                    } else {
+                        // Si no hay productos, muestra un mensaje
+                        Toast.makeText(InventoryActivity.this, "No hay productos disponibles", Toast.LENGTH_SHORT).show();
                     }
-                    inventoryAdapter.notifyDataSetChanged();
                 })
-                .addOnFailureListener(e -> Log.e("InventoryActivity", "Error al cargar el inventario", e));
-    }
+                .addOnFailureListener(e -> {
+                    Log.e("InventoryActivity", "Error al cargar el inventario", e);
+                    // Mostrar un mensaje al usuario en caso de error
+                    Toast.makeText(InventoryActivity.this, "Error al cargar los productos", Toast.LENGTH_SHORT).show();
+           });
+}
 }
