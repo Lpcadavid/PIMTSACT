@@ -22,6 +22,7 @@ public class CrudActivity extends AppCompatActivity {
     private Button btninventario;
     private TextView welcomeTextView;
     private Button logoutButton;
+    private Button btnGemini;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class CrudActivity extends AppCompatActivity {
         btnListarClientes = findViewById(R.id.btnListarClientes);
         btnListarProductos = findViewById(R.id.btnListarProductos);
         btninventario = findViewById(R.id.btninventario);
+        btnGemini = findViewById(R.id.btnGemini);
 
         // Verificar si el usuario está autenticado
         FirebaseUser user = auth.getCurrentUser();
@@ -80,30 +82,32 @@ public class CrudActivity extends AppCompatActivity {
             Intent intent = new Intent(CrudActivity.this, InventoryActivity.class);
             startActivity(intent);
         });
+
+        // Configurar el botón btnGemini para abrir GeminiActivity
+        btnGemini.setOnClickListener(view -> {
+            Intent intent = new Intent(CrudActivity.this, GeminiActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void logout() {
-        auth.signOut();
-        // Regresar a la pantalla de login y limpiar el stack de actividades
-        Intent intent = new Intent(CrudActivity.this, IniciarsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        auth.signOut(); // Desconectar al usuario
+        // Regresar a la pantalla principal (CrudActivity)
+        Intent intent = new Intent(CrudActivity.this, CrudActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpiar el stack de actividades
         startActivity(intent);
-        finish();
+        finish(); // Finalizar esta actividad
     }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = auth.getCurrentUser();
-        if (user == null) {
-            // Si el usuario no está autenticado, redirige a la pantalla de inicio de sesión
+        // Verificar usuario cada vez que la activity se inicie
+        if (auth.getCurrentUser() == null) {
             Intent intent = new Intent(CrudActivity.this, IniciarsActivity.class);
             startActivity(intent);
             finish();
-        } else {
-            // Mostrar información del usuario en el TextView
-            welcomeTextView.setText("Bienvenido: " + user.getEmail());
         }
     }
-
 }

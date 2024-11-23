@@ -41,11 +41,16 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
+    implementation ("androidx.concurrent:concurrent-futures:1.2.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+    implementation("com.google.guava:guava:31.0.1-android")
+    implementation("org.reactivestreams:reactive-streams:1.0.4")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
-    implementation ("com.google.firebase:firebase-auth:21.1.0") // o la versión más reciente
-    implementation ("com.google.firebase:firebase-auth:21.1.0") // Para la autenticación de Firebase
-    implementation("com.github.bumptech.glide:glide:4.15.1") // Agregar Glide aquí
-    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1") // Para usar Glide en Android
+    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.firebase.crashlytics.buildtools)
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
 
     testImplementation(libs.junit)

@@ -101,6 +101,17 @@
             android:textColor="@color/black"
             android:layout_marginBottom="12dp" />
 
+        <Button
+            android:id="@+id/btnGemini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preguntar a Gemini"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="#d887a2"
+            android:textColor="@color/black"
+            android:layout_marginBottom="12dp" />
+
 
         <Button
             android:id="@+id/logoutButton"

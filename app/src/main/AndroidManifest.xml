@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Santaellafinal"
         tools:targetApi="31">
         <activity
+            android:name=".GeminiActivity"
+            android:exported="false" />
+        <activity
             android:name=".InventoryActivity"
             android:exported="false" />
         <activity

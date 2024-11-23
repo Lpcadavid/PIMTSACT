@@ -8,13 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -26,7 +28,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class IniciarsActivity extends AppCompatActivity {
     private static final String TAG = "IniciarsActivity";
-    private static final int REQ_ONE_TAP = 2;  // Puedes usar cualquier entero único
+    private static final int REQ_ONE_TAP = 2;
 
     private FirebaseAuth auth;
     private SignInClient oneTapClient;
@@ -37,6 +39,9 @@ public class IniciarsActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
     private Button googleButton;
+
+    // ActivityResultLauncher para manejar el resultado de la autenticación
+    private ActivityResultLauncher<Intent> signInActivityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,15 @@ public class IniciarsActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> loginUser());
         registerButton.setOnClickListener(v -> registerUser());
         googleButton.setOnClickListener(v -> signIn());
+
+        // Registrar ActivityResultLauncher
+        signInActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                this::onSignInResult
+        );
+    }
+
+    private void onSignInResult(ActivityResult activityResult) {
     }
 
     private boolean validateFields(String email, String password) {
@@ -145,10 +159,10 @@ public class IniciarsActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, result -> {
                     try {
                         // Usamos el PendingIntent de la respuesta y pasamos su IntentSender
-                        startIntentSenderForResult(
-                                result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
-                                null, 0, 0, 0);
-                    } catch (IntentSender.SendIntentException e) {
+                        IntentSender intentSender = result.getPendingIntent().getIntentSender();
+                        // Usamos startIntentSenderForResult para manejar el IntentSender
+                        startIntentSenderForResult(intentSender, REQ_ONE_TAP, null, 0, 0, 0);
+                    } catch (Exception e) {
                         Log.e(TAG, "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                         signInWithGoogle();  // Método para iniciar flujo alternativo de Google
                     }
@@ -171,8 +185,9 @@ public class IniciarsActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, REQ_ONE_TAP);
     }
 
+    // Método para manejar el resultado de la autenticación
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQ_ONE_TAP && resultCode == RESULT_OK) {
@@ -232,7 +247,6 @@ public class IniciarsActivity extends AppCompatActivity {
             Intent intent = new Intent(IniciarsActivity.this, CrudActivity.class);
             startActivity(intent);
             finish();
-        }
-    }
-
+ }
+}
 }
