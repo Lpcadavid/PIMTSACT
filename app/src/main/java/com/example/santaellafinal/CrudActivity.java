@@ -94,11 +94,16 @@ public class CrudActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Verificar usuario cada vez que la activity se inicie
-        if (auth.getCurrentUser() == null) {
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
+            // Si el usuario no está autenticado, redirige a la pantalla de inicio de sesión
             Intent intent = new Intent(CrudActivity.this, IniciarsActivity.class);
             startActivity(intent);
             finish();
+        } else {
+            // Mostrar información del usuario en el TextView
+            welcomeTextView.setText("Bienvenido: " + user.getEmail());
         }
     }
+
 }
