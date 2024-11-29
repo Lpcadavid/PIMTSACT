@@ -3,62 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/md_theme_onErrorContainer"
-
-    android:id="@+id/main"
     android:layout_height="match_parent"
+
+    android:background="@color/md_theme_onErrorContainer"
     tools:context=".GeminiActivity">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvResultado"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Resultado de la IA:"
-        android:textSize="18sp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/et1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Campo de texto para que el usuario ingrese una solicitud -->
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:padding="16dp"
+            android:textColor="@color/black" />
+    </ScrollView>
+
     <EditText
         android:id="@+id/et1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Escribe tu solicitud aquí"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Preguntar a Gemini"
+        android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvResultado" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnGenerar" />
 
-    <!-- Botón para generar contenido con Gemini AI -->
     <Button
         android:id="@+id/btnGenerar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Generar"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:text="Preguntar"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         android:backgroundTint="#d887a2"
         android:textColor="@color/black"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et1" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- ProgressBar para mostrar mientras se genera el contenido -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGenerar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnGenerar" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

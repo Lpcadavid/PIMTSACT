@@ -7,9 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,13 +25,6 @@ public class CrudActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crud);
-
-        // Ajuste de padding para la barra de sistema (opcional)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Inicializar Firebase Auth
         auth = FirebaseAuth.getInstance();
@@ -68,22 +58,25 @@ public class CrudActivity extends AppCompatActivity {
     }
 
     private void setupButtons() {
+        // Configurar el botón de Listar Clientes
         btnListarClientes.setOnClickListener(view -> {
             Intent intent = new Intent(CrudActivity.this, ClienteActivity.class);
             startActivity(intent);
         });
 
+        // Configurar el botón de Listar Productos
         btnListarProductos.setOnClickListener(view -> {
             Intent intent = new Intent(CrudActivity.this, ProductActivity.class);
             startActivity(intent);
         });
 
+        // Configurar el botón de Inventario
         btninventario.setOnClickListener(view -> {
             Intent intent = new Intent(CrudActivity.this, InventoryActivity.class);
             startActivity(intent);
         });
 
-        // Configurar el botón btnGemini para abrir GeminiActivity
+        // Configurar el botón btnGemini
         btnGemini.setOnClickListener(view -> {
             Intent intent = new Intent(CrudActivity.this, GeminiActivity.class);
             startActivity(intent);
@@ -92,18 +85,17 @@ public class CrudActivity extends AppCompatActivity {
 
     private void logout() {
         auth.signOut(); // Desconectar al usuario
-        // Regresar a la pantalla principal (CrudActivity)
-        Intent intent = new Intent(CrudActivity.this, CrudActivity.class);
+        // Regresar a la pantalla principal (IniciarsActivity)
+        Intent intent = new Intent(CrudActivity.this, IniciarsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpiar el stack de actividades
         startActivity(intent);
         finish(); // Finalizar esta actividad
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
-        // Verificar usuario cada vez que la activity se inicie
+        // Verificar si el usuario está autenticado cada vez que la actividad se inicia
         if (auth.getCurrentUser() == null) {
             Intent intent = new Intent(CrudActivity.this, IniciarsActivity.class);
             startActivity(intent);

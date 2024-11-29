@@ -46,9 +46,9 @@ dependencies {
     implementation("com.google.guava:guava:31.0.1-android")
     implementation("org.reactivestreams:reactive-streams:1.0.4")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
-    implementation ("com.google.firebase:firebase-auth:21.1.0")
-    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.firebase:firebase-auth:22.1.0")
     implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation(libs.firebase.crashlytics.buildtools)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
