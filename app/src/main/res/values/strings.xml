@@ -2,9 +2,7 @@
     <string name="app_name">Santaellafinal</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="default_web_client_id">"744994983816-j29pogop0qh1sujal47dmdofgfiolm81.apps.googleusercontent.com"
-</string>
-
+    <string name="default_web_client_id">Tu ID de cliente web</string>
 
     <!-- Descripción de la empresa -->
     <!-- Introducción -->
